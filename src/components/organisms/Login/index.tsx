@@ -3,24 +3,22 @@ import Button from '~/components/atoms/Button';
 import Link from '~/components/atoms/Link';
 import Typography from '~/components/atoms/Typography';
 import Input from '~/components/molecules/Input';
-import AuthWrapper from '~/components/organisms/AuthWrapper';
+import AuthWrapper from '~/components/templates/AuthWrapper';
 
 const text = {
-  header: 'Create account',
-  subheading: 'Let’s get you started sharing your links!',
+  header: 'Login',
+  subheading: 'Add your details below to get back into the app',
   emailLabel: 'Email address',
   emailPlaceholder: 'e.g example@gmail.com',
-  passwordLabel: 'Create password',
-  passwordPlaceholder: 'At least 8 characters',
-  confirmPasswordLabel: 'Confirm password',
+  passwordLabel: 'Password',
+  passwordPlaceholder: 'Enter your password',
   buttonLabel: 'Login',
-  haveAccount: `Already have an account?`,
-  logIn: 'Login',
-  passwordRule: 'Password must contain at least 8 characters',
+  noAccount: `Don't have an account?`,
+  createAccount: 'Create account',
 };
 type Props = {};
 
-const CreateAccount: React.FC<Props> = ({}) => {
+const Login: React.FC<Props> = ({}) => {
   return (
     <AuthWrapper>
       <Header>
@@ -42,21 +40,12 @@ const CreateAccount: React.FC<Props> = ({}) => {
           label={text.passwordLabel}
           placeholder={text.passwordPlaceholder}
         />
-        <Input
-          type="password"
-          icon="password"
-          label={text.confirmPasswordLabel}
-          placeholder={text.passwordPlaceholder}
-        />
-        <Typography color="grey" variant="bodyS">
-          {text.passwordRule}
-        </Typography>
         <Button label={text.buttonLabel} width="100%" />{' '}
         <div>
           <Typography color="grey" variant="bodyM">
-            {text.haveAccount}
+            {text.noAccount}
           </Typography>{' '}
-          <Link to="#">{text.logIn}</Link>
+          <Link to="#">{text.createAccount}</Link>
         </div>
       </Main>
     </AuthWrapper>
@@ -80,4 +69,4 @@ const Main = styled.div(
   `,
 );
 
-export default CreateAccount;
+export default Login;

@@ -4,9 +4,9 @@ import React from 'react';
 const Logo: React.FC<{ size?: 'large' | 'small' }> = ({ size = 'small' }) => (
   <Image
     src={`/images/logo-devlinks-${size}.svg`}
-    alt={`logo-devlinks-${size}`}
+    alt={`logo-devlinks`}
     width={size === 'large' ? 180 : 40}
-    height={40}
+    height={32}
   />
 );
 

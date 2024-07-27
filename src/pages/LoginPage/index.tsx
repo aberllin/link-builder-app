@@ -1,12 +1,12 @@
-import AuthLayout from '~/components/organisms/AuthLayout';
-import LoginPage from '~/components/templates/Login';
+import Login from '~/components/organisms/Login';
+import AuthLayout from '~/components/templates/AuthLayout';
 
-const Login: React.FC = () => {
+const LoginPage: React.FC = () => {
   return (
     <AuthLayout>
-      <LoginPage />
+      <Login />
     </AuthLayout>
   );
 };
 
-export default Login;
+export default LoginPage;

@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   appearance?: 'primary' | 'secondary';
-  label: string;
+  label: React.ReactNode;
   width?: string;
 };
 
@@ -26,8 +26,8 @@ const ButtonElement = styled.button<{
 }>(
   ({ theme, $appearance, $width }) => css`
     cursor: pointer;
-    padding: ${theme.space('base')} ${theme.space('xl')};
-    height: ${theme.space('xxxxl')};
+    padding: ${theme.space('base')};
+    height: 46px;
     width: ${$width};
     font-size: ${theme.space('m')};
     font-weight: ${theme.fontWeight('medium')};

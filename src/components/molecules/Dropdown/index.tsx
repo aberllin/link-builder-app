@@ -105,7 +105,7 @@ const DropdownHeader = styled.div<{ $isOpen: boolean }>(
     align-items: center;
     padding: ${theme.space('s')} ${theme.space('m')};
     border: 1px solid ${$isOpen ? theme.color('purple') : theme.color('border')};
-    height: ${theme.space('xxxxl')};
+    height: 46px;
     border-radius: ${theme.border('s')};
     cursor: pointer;
     transition: all 0.3s ease;

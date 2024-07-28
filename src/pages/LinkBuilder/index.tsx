@@ -8,6 +8,8 @@ import ProfileBlock from '../../components/organisms/ProfileBlock';
 import linksState from '~/state/links';
 import { LinkItemProps } from '~/components/organisms/LinksBlock/components/LinkItemBlock';
 import { v4 as uuidv4 } from 'uuid';
+import PreviewBlock from '~/components/organisms/PreviewBlock';
+import isMobileBreakpoint from '~/utils/isMobileBreakpoint';
 
 const getEmptyLink = (): LinkItemProps => ({
   key: uuidv4(),
@@ -36,9 +38,15 @@ const LinkBuilder: React.FC = () => {
   const onDelete = (key: string) =>
     setLinks(prev => prev.filter(link => link.key !== key));
 
+  const isMobile = isMobileBreakpoint();
+
   return (
     <Container>
-      <PageBlock $flex={4}>PREVIEW</PageBlock>
+      {!isMobile && (
+        <PageBlock $flex={4}>
+          <PreviewBlock links={links} />
+        </PageBlock>
+      )}
       <PageBlock $flex={6}>
         <PageContent>
           <Header>

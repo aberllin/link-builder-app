@@ -53,8 +53,11 @@ const Links = styled.div(
     display: flex;
     gap: ${theme.space('xl')};
     flex-direction: column;
+    max-height: 500px;
+    overflow-y: scroll;
   `,
 );
+
 const EmptyLinksBlock = styled.div(
   ({ theme }) => css`
     display: flex;
@@ -62,7 +65,8 @@ const EmptyLinksBlock = styled.div(
     align-items: center;
     justify-content: center;
     background: ${theme.color('lightGrey')};
-    padding: ${theme.space('xl')};
+    gap: ${theme.space('l')};
+    padding: ${theme.space('xxl')};
     border-radius: ${theme.border('base')};
   `,
 );

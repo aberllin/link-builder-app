@@ -8,6 +8,7 @@ export type SystemColorPalette = {
   border: string;
   white: string;
   error: string;
+  placeholder: string;
 };
 
 const colorPalette: SystemColorPalette = {
@@ -20,6 +21,7 @@ const colorPalette: SystemColorPalette = {
   lightGrey: '#FAFAFA',
   white: '#fff',
   error: '#FF3939',
+  placeholder: '#eeeeee',
 };
 
 export default colorPalette;

@@ -2,8 +2,9 @@ import { useRecoilState } from 'recoil';
 import { styled, css } from 'styled-components';
 import Icon from '~/components/atoms/Icon';
 import Typography from '~/components/atoms/Typography';
-import Dropdown, { type Option } from '~/components/molecules/Dropdown';
+import Dropdown from '~/components/molecules/Dropdown';
 import Input from '~/components/molecules/Input';
+import { linkData, linkOptions, type LinkType } from '~/constants';
 import { linkByKeyState } from '~/state/links';
 
 export type LinkItemProps = {
@@ -18,71 +19,9 @@ export type Props = {
   linkKey: string;
 };
 
-type LinkType =
-  | 'github'
-  | 'frontendMentor'
-  | 'twitter'
-  | 'linkedin'
-  | 'youtube'
-  | 'facebook'
-  | 'twitch'
-  | 'devto'
-  | 'codewars'
-  | 'codepen'
-  | 'freecodecamp'
-  | 'gitlab'
-  | 'hashnode'
-  | 'stackoverflow';
-
-const linkOptions: Array<Option<LinkType>> = [
-  { icon: 'github', label: 'GitHub', value: 'github' },
-  {
-    icon: 'frontend-mentor',
-    label: 'Frontend Mentor',
-    value: 'frontendMentor',
-  },
-  { icon: 'twitter', label: 'Twitter', value: 'twitter' },
-  { icon: 'linkedin', label: 'LinkedIn', value: 'linkedin' },
-  { icon: 'youtube', label: 'YouTube', value: 'youtube' },
-  { icon: 'facebook', label: 'Facebook', value: 'facebook' },
-  { icon: 'twitch', label: 'Twitch', value: 'twitch' },
-  { icon: 'devto', label: 'Dev.to', value: 'devto' },
-  { icon: 'codewars', label: 'Codewars', value: 'codewars' },
-  { icon: 'codepen', label: 'Codepen', value: 'codepen' },
-  {
-    icon: 'freecodecamp',
-    label: 'freeCodeCamp',
-    value: 'freecodecamp',
-  },
-  { icon: 'gitlab', label: 'GitLab', value: 'gitlab' },
-  { icon: 'hashnode', label: 'Hashnode', value: 'hashnode' },
-  {
-    icon: 'stack-overflow',
-    label: 'Stack Overflow',
-    value: 'stackoverflow',
-  },
-];
-
-const placeholderMap: { [key in LinkType]: string } = {
-  github: 'https://github.com/username',
-  frontendMentor: 'https://www.frontendmentor.io/profile/username',
-  twitter: 'https://twitter.com/username',
-  linkedin: 'https://www.linkedin.com/in/username',
-  youtube: 'https://www.youtube.com/user/username',
-  facebook: 'https://www.facebook.com/username',
-  twitch: 'https://www.twitch.tv/username',
-  devto: 'https://dev.to/username',
-  codewars: 'https://www.codewars.com/users/username',
-  codepen: 'https://codepen.io/username',
-  freecodecamp: 'https://www.freecodecamp.org/username',
-  gitlab: 'https://gitlab.com/username',
-  hashnode: 'https://hashnode.com/@username',
-  stackoverflow: 'https://stackoverflow.com/users/userid/username',
-};
-
 const LinkItemBlock: React.FC<Props> = ({ index, linkKey, onRemove }) => {
   const [currentLink, setCurrentLink] = useRecoilState(linkByKeyState(linkKey));
-  const placeholder = placeholderMap[currentLink?.type || 'github'];
+  const placeholder = linkData[currentLink?.type || 'github'].placeholder;
 
   const onLinkChange = (
     key: LinkItemProps['to'] | LinkItemProps['type'],

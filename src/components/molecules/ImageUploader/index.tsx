@@ -6,7 +6,7 @@ import isMobileBreakpoint from '~/utils/isMobileBreakpoint';
 
 type Props = {
   initialImage?: string;
-  onImageUpload?: (file: File) => void;
+  onImageUpload?: (src: string) => void;
   label: string;
 };
 
@@ -24,7 +24,7 @@ const ImageUploader: React.FC<Props> = ({
       const imageUrl = URL.createObjectURL(file);
       setImage(imageUrl);
       if (onImageUpload) {
-        onImageUpload(file);
+        onImageUpload(imageUrl);
       }
     }
   };

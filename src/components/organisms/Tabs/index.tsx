@@ -2,9 +2,11 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import Icon, { IconName } from '~/components/atoms/Icon';
 import Typography from '~/components/atoms/Typography';
+import type { Section } from '~/state/currentSection';
 import isMobileBreakpoint from '~/utils/isMobileBreakpoint';
 
 type TabProps = {
+  key: string;
   label: string;
   icon: IconName;
   isActive?: boolean;
@@ -26,25 +28,25 @@ const Tab: React.FC<TabProps> = ({ label, icon, isActive, onClick }) => {
 };
 
 type TabsProps = {
-  tabs: Array<{ label: string; icon: IconName }>;
-  activeTabIndex?: number;
-  onTabClick: (index: number) => void;
+  tabs: Array<{ label: string; icon: IconName; key: Section }>;
+  currentSection: Section;
+  onTabClick: (key: Section) => void;
 };
 
 const Tabs: React.FC<TabsProps> = ({
   tabs,
-  activeTabIndex = 0,
+  currentSection = 0,
   onTabClick,
 }) => {
   return (
     <TabsContainer>
-      {tabs.map((tab, index) => (
+      {tabs.map(tab => (
         <Tab
           key={tab.label}
           label={tab.label}
           icon={tab.icon}
-          isActive={index === activeTabIndex}
-          onClick={() => onTabClick(index)}
+          isActive={tab.key === currentSection}
+          onClick={() => onTabClick(tab.key)}
         />
       ))}
     </TabsContainer>

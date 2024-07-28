@@ -1,5 +1,6 @@
 import React, { type ButtonHTMLAttributes } from 'react';
 import styled, { css } from 'styled-components';
+import isMobileBreakpoint from '~/utils/isMobileBreakpoint';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
   appearance?: 'primary' | 'secondary';
@@ -13,8 +14,14 @@ const Button: React.FC<Props> = ({
   width = 'auto',
   ...rest
 }) => {
+  const isMobile = isMobileBreakpoint();
   return (
-    <ButtonElement $appearance={appearance} $width={width} {...rest}>
+    <ButtonElement
+      $appearance={appearance}
+      $width={width}
+      $isMobile={isMobile}
+      {...rest}
+    >
       {label}
     </ButtonElement>
   );
@@ -23,10 +30,11 @@ const Button: React.FC<Props> = ({
 const ButtonElement = styled.button<{
   $appearance: Props['appearance'];
   $width: Props['width'];
+  $isMobile: boolean;
 }>(
-  ({ theme, $appearance, $width }) => css`
+  ({ theme, $appearance, $width, $isMobile }) => css`
     cursor: pointer;
-    padding: ${theme.space('base')};
+    padding: ${`${theme.space('base')} ${$isMobile ? theme.space('base') : theme.space('xxl')}`};
     height: 46px;
     width: ${$width};
     font-size: ${theme.space('m')};

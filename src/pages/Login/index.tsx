@@ -3,6 +3,7 @@ import Button from '~/components/atoms/Button';
 import Link from '~/components/atoms/Link';
 import Typography from '~/components/atoms/Typography';
 import Input from '~/components/molecules/Input';
+import AuthLayout from '~/components/templates/AuthLayout';
 import AuthWrapper from '~/components/templates/AuthWrapper';
 
 const text = {
@@ -20,35 +21,37 @@ type Props = {};
 
 const Login: React.FC<Props> = ({}) => {
   return (
-    <AuthWrapper>
-      <Header>
-        <Typography variant="h1">{text.header}</Typography>
-        <Typography color="grey" variant="bodyM">
-          {text.subheading}
-        </Typography>
-      </Header>
-      <Main>
-        <Input
-          type="email"
-          icon="email"
-          label={text.emailLabel}
-          placeholder={text.emailPlaceholder}
-        />
-        <Input
-          type="password"
-          icon="password"
-          label={text.passwordLabel}
-          placeholder={text.passwordPlaceholder}
-        />
-        <Button label={text.buttonLabel} width="100%" />{' '}
-        <div>
+    <AuthLayout>
+      <AuthWrapper>
+        <Header>
+          <Typography variant="h1">{text.header}</Typography>
           <Typography color="grey" variant="bodyM">
-            {text.noAccount}
-          </Typography>{' '}
-          <Link to="#">{text.createAccount}</Link>
-        </div>
-      </Main>
-    </AuthWrapper>
+            {text.subheading}
+          </Typography>
+        </Header>
+        <Main>
+          <Input
+            type="email"
+            icon="email"
+            label={text.emailLabel}
+            placeholder={text.emailPlaceholder}
+          />
+          <Input
+            type="password"
+            icon="password"
+            label={text.passwordLabel}
+            placeholder={text.passwordPlaceholder}
+          />
+          <Button label={text.buttonLabel} width="100%" />{' '}
+          <div>
+            <Typography color="grey" variant="bodyM">
+              {text.noAccount}
+            </Typography>{' '}
+            <Link to="#">{text.createAccount}</Link>
+          </div>
+        </Main>
+      </AuthWrapper>
+    </AuthLayout>
   );
 };
 

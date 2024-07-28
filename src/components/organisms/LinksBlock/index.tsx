@@ -1,23 +1,19 @@
 import { styled, css } from 'styled-components';
 import Button from '~/components/atoms/Button';
-import Icon from '~/components/atoms/Icon';
-import type { IconName } from '~/components/atoms/Icon';
 import Illustration from '~/components/atoms/Illustration';
-import Logo from '~/components/atoms/Logo';
-import Tabs from '~/components/atoms/Tab';
 import Typography from '~/components/atoms/Typography';
-
-import isMobileBreakpoint from '~/utils/isMobileBreakpoint';
-
-const text = {
-  preview: 'Preview',
-};
+import LinkBuilder from './components/LinkBuilder';
 
 type Props = {};
-
+const links = [
+  { option: {}, link: '' },
+  { option: {}, link: '' },
+  { option: {}, link: '' },
+  { option: {}, link: '' },
+];
 const LinksBlock: React.FC<Props> = () => {
   // @TODO: import from the recoil state
-  const links = [];
+  // const links = [];
 
   return (
     <Container>
@@ -36,10 +32,26 @@ const LinksBlock: React.FC<Props> = () => {
           </Description>
         </EmptyLinksBlock>
       )}
+      {links.length > 0 && (
+        <Links>
+          {links.map(link => (
+            <LinkBuilder key={link.link} />
+          ))}
+        </Links>
+      )}
     </Container>
   );
 };
 
+const Links = styled.div(
+  ({ theme }) => css`
+    width: 100%;
+    display: flex;
+    gap: ${theme.space('xl')};
+    flex-direction: column;
+    overflow-y: scroll;
+  `,
+);
 const EmptyLinksBlock = styled.div(
   ({ theme }) => css`
     display: flex;
@@ -58,9 +70,12 @@ const Description = styled(Typography)`
 const Container = styled.div(
   ({ theme }) => css`
     display: flex;
+    gap: ${theme.space('xl')};
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
+    margin-top: ${theme.space('xxxl')};
   `,
 );
 

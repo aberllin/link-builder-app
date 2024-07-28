@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react';
 
 export type IconName =
@@ -31,7 +30,8 @@ export type IconName =
   | 'youtube';
 
 const Icon: React.FC<{ name: IconName }> = ({ name }) => (
-  <Image src={`/images/icon-${name}.svg`} alt={name} width={16} height={16} />
+  // eslint-disable-next-line @next/next/no-img-element
+  <img src={`/images/icon-${name}.svg`} alt={name} />
 );
 
 export default Icon;

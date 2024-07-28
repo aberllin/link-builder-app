@@ -36,7 +36,6 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: 'InstrumentSans', sans-serif;
-    background-color: ${({ theme }) => theme.color('lightGrey')}
   }
   
   button, input {

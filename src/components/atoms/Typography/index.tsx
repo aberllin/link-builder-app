@@ -11,6 +11,7 @@ type TypographyProps = {
   color?: keyof SystemColorPalette;
   variant: Variant;
   children: React.ReactNode;
+  onClick?: () => void;
 };
 
 const typographyStyles: {
@@ -20,7 +21,7 @@ const typographyStyles: {
   };
 } = {
   h1: { fontSize: '32px', fontWeight: 'bold' },
-  h2: { fontSize: '16px', fontWeight: 'bold' },
+  h2: { fontSize: '16px', fontWeight: 'medium' },
   bodyM: { fontSize: '16px', fontWeight: 'regular' },
   bodyS: { fontSize: '12px', fontWeight: 'regular' },
   label: { fontSize: '16px', fontWeight: 'bold' },
@@ -31,6 +32,7 @@ const Typography: React.FC<TypographyProps> = ({
   children,
   color = 'darkGrey',
   as,
+  onClick,
   ...props
 }) => {
   const Component = as || 'span';
@@ -42,6 +44,7 @@ const Typography: React.FC<TypographyProps> = ({
       fontSize={fontSize}
       fontWeight={fontWeight}
       $color={color}
+      $clickable={!!onClick}
       {...props}
     >
       {children}
@@ -53,12 +56,26 @@ const StyledTypography = styled.span<{
   fontSize?: string;
   fontWeight?: SystemFontWeight;
   $color: keyof SystemColorPalette;
+  $clickable?: boolean;
 }>(
-  ({ theme, fontSize, fontWeight = 'regular', $color }) => css`
+  ({
+    theme,
+    fontSize,
+    fontWeight = 'regular',
+    $color,
+    $clickable = false,
+  }) => css`
     font-size: ${fontSize};
     font-weight: ${theme.fontWeight(fontWeight)};
     line-height: 1.5;
     color: ${theme.color($color)};
+    transition: all 0.3s ease;
+
+    cursor: ${$clickable ? 'pointer' : 'inherit'};
+
+    &:hover {
+      text-decoration: ${$clickable ? 'underline' : 'none'};
+    }
   `,
 );
 

@@ -1,7 +1,45 @@
+import styled, { css } from 'styled-components';
+import { useRecoilValue } from 'recoil';
+import currentPageState from '~/state/currentPage';
+import LinkBuilder from './LinkBuilder';
+import Preview from './Preview';
 import NavigationBar from '~/components/organisms/NavigationBar';
-import CreateAccountPage from './CreateAccountPage';
-import LinksBlock from '~/components/organisms/LinksBlock';
 
 export default function Page() {
-  return <LinksBlock />;
+  const currentPage = useRecoilValue(currentPageState);
+  const isPreview = currentPage === 'preview';
+  return (
+    <Container>
+      {isPreview && <PreviewBackground />}
+      <MainContent>
+        <NavigationBar />
+        {currentPage === 'links' ? <LinkBuilder /> : <Preview />}
+      </MainContent>
+    </Container>
+  );
 }
+
+const MainContent = styled.div(
+  ({}) => css`
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  `,
+);
+
+const PreviewBackground = styled.div(
+  ({ theme }) => css`
+    background: ${theme.color('purple')};
+    height: 350px;
+    border-bottom-left-radius: ${theme.border('m')};
+    border-bottom-right-radius: ${theme.border('m')};
+  `,
+);
+
+const Container = styled.div(
+  ({ theme }) => css`
+    background: ${theme.color('lightGrey')};
+  `,
+);

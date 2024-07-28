@@ -157,8 +157,9 @@ const DropdownItem = styled.div<{ selected: boolean }>(
     margin: 0 ${theme.space('base')};
     padding: ${theme.space('s')} 0;
     cursor: pointer;
-    color: ${selected ? theme.color('purple') : theme.color('darkGrey')};
+    color: ${selected ? theme.color('purple') : theme.color('grey')};
     transition: all 0.3s ease;
+    font-weight: ${theme.fontWeight('regular')};
 
     &:not(:last-child) {
       border-bottom: 1px solid ${theme.color('border')};

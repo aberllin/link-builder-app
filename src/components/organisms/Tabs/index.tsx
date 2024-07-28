@@ -16,7 +16,7 @@ type TabProps = {
 const Tab: React.FC<TabProps> = ({ label, icon, isActive, onClick }) => {
   const isMobile = isMobileBreakpoint();
   return (
-    <TabItem isActive={isActive} onClick={onClick}>
+    <TabItem $isActive={isActive} onClick={onClick}>
       <Icon name={icon} />
       {!isMobile && (
         <Typography variant="h2" color={isActive ? 'purple' : 'grey'}>
@@ -37,21 +37,19 @@ const Tabs: React.FC<TabsProps> = ({
   tabs,
   currentSection = 0,
   onTabClick,
-}) => {
-  return (
-    <TabsContainer>
-      {tabs.map(tab => (
-        <Tab
-          key={tab.label}
-          label={tab.label}
-          icon={tab.icon}
-          isActive={tab.key === currentSection}
-          onClick={() => onTabClick(tab.key)}
-        />
-      ))}
-    </TabsContainer>
-  );
-};
+}) => (
+  <TabsContainer>
+    {tabs.map(tab => (
+      <Tab
+        key={tab.label}
+        label={tab.label}
+        icon={tab.icon}
+        isActive={tab.key === currentSection}
+        onClick={() => onTabClick(tab.key)}
+      />
+    ))}
+  </TabsContainer>
+);
 
 const TabsContainer = styled.div(
   ({ theme }) => css`
@@ -60,8 +58,8 @@ const TabsContainer = styled.div(
   `,
 );
 
-const TabItem = styled.div<{ isActive?: boolean }>(
-  ({ theme, isActive }) => css`
+const TabItem = styled.div<{ $isActive?: boolean }>(
+  ({ theme, $isActive }) => css`
     display: flex;
     align-items: center;
     gap: ${theme.space('s')};
@@ -69,7 +67,7 @@ const TabItem = styled.div<{ isActive?: boolean }>(
     height: 46px;
     cursor: pointer;
     border-radius: ${theme.border('s')};
-    background-color: ${isActive ? theme.color('lightPurple') : 'transparent'};
+    background-color: ${$isActive ? theme.color('lightPurple') : 'transparent'};
     transition:
       background-color 0.3s,
       color 0.3s;

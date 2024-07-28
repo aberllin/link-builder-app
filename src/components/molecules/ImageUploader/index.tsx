@@ -17,7 +17,7 @@ const ImageUploader: React.FC<Props> = ({
 }) => {
   const [image, setImage] = useState<string | null>(initialImage || null);
   const isMobile = isMobileBreakpoint();
-  console.log({ isMobile });
+
   const handleImageUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {

@@ -45,6 +45,7 @@ const Typography: React.FC<TypographyProps> = ({
       fontWeight={fontWeight}
       $color={color}
       $clickable={!!onClick}
+      onClick={onClick}
       {...props}
     >
       {children}

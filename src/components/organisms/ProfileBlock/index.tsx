@@ -3,37 +3,33 @@ import Typography from '~/components/atoms/Typography';
 import ImageUploader from '~/components/molecules/ImageUploader';
 import Input from '~/components/molecules/Input';
 
-type Props = {};
-
-const ProfileBlock: React.FC<Props> = () => {
-  return (
-    <Container>
-      <BlockWrapper>
-        <ImageUploader label="Profile picture" />
-      </BlockWrapper>
-      <BlockWrapper>
-        <InputContainer>
-          <Typography color="grey" variant="bodyM">
-            First name&#42;
-          </Typography>
-          <Input />
-        </InputContainer>
-        <InputContainer>
-          <Typography color="grey" variant="bodyM">
-            Last name&#42;
-          </Typography>
-          <Input />
-        </InputContainer>
-        <InputContainer>
-          <Typography color="grey" variant="bodyM">
-            Email&#42;
-          </Typography>
-          <Input />
-        </InputContainer>
-      </BlockWrapper>
-    </Container>
-  );
-};
+const ProfileBlock: React.FC = () => (
+  <Container>
+    <BlockWrapper>
+      <ImageUploader label="Profile picture" />
+    </BlockWrapper>
+    <BlockWrapper>
+      <InputContainer>
+        <Typography color="grey" variant="bodyM">
+          First name&#42;
+        </Typography>
+        <Input />
+      </InputContainer>
+      <InputContainer>
+        <Typography color="grey" variant="bodyM">
+          Last name&#42;
+        </Typography>
+        <Input />
+      </InputContainer>
+      <InputContainer>
+        <Typography color="grey" variant="bodyM">
+          Email&#42;
+        </Typography>
+        <Input />
+      </InputContainer>
+    </BlockWrapper>
+  </Container>
+);
 
 const BlockWrapper = styled.div(
   ({ theme }) => css`

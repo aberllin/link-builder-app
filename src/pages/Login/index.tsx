@@ -17,46 +17,43 @@ const text = {
   noAccount: `Don't have an account?`,
   createAccount: 'Create account',
 };
-type Props = {};
 
-const Login: React.FC<Props> = ({}) => {
-  return (
-    <AuthLayout>
-      <AuthWrapper>
-        <Header>
-          <Typography variant="h1">{text.header}</Typography>
+const Login: React.FC = () => (
+  <AuthLayout>
+    <AuthWrapper>
+      <Header>
+        <Typography variant="h1">{text.header}</Typography>
+        <Typography color="grey" variant="bodyM">
+          {text.subheading}
+        </Typography>
+      </Header>
+      <Main>
+        <Input
+          type="email"
+          icon="email"
+          label={text.emailLabel}
+          placeholder={text.emailPlaceholder}
+        />
+        <Input
+          type="password"
+          icon="password"
+          label={text.passwordLabel}
+          placeholder={text.passwordPlaceholder}
+        />
+        <Button label={text.buttonLabel} width="100%" />{' '}
+        <div>
           <Typography color="grey" variant="bodyM">
-            {text.subheading}
-          </Typography>
-        </Header>
-        <Main>
-          <Input
-            type="email"
-            icon="email"
-            label={text.emailLabel}
-            placeholder={text.emailPlaceholder}
-          />
-          <Input
-            type="password"
-            icon="password"
-            label={text.passwordLabel}
-            placeholder={text.passwordPlaceholder}
-          />
-          <Button label={text.buttonLabel} width="100%" />{' '}
-          <div>
-            <Typography color="grey" variant="bodyM">
-              {text.noAccount}
-            </Typography>{' '}
-            <Link to="#">{text.createAccount}</Link>
-          </div>
-        </Main>
-      </AuthWrapper>
-    </AuthLayout>
-  );
-};
+            {text.noAccount}
+          </Typography>{' '}
+          <Link to="#">{text.createAccount}</Link>
+        </div>
+      </Main>
+    </AuthWrapper>
+  </AuthLayout>
+);
 
 const Header = styled.div(
-  ({}) => css`
+  () => css`
     display: flex;
     flex-direction: column;
   `,

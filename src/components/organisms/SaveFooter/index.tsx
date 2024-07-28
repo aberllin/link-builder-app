@@ -1,15 +1,11 @@
 import { styled, css } from 'styled-components';
 import Button from '~/components/atoms/Button';
 
-type Props = {};
-
-const SaveFooter: React.FC<Props> = () => {
-  return (
-    <Container>
-      <Button label="Save" />
-    </Container>
-  );
-};
+const SaveFooter: React.FC = () => (
+  <Container>
+    <Button label="Save" />
+  </Container>
+);
 
 const Container = styled.div(
   ({ theme }) => css`

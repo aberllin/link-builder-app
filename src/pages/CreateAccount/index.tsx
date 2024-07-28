@@ -20,53 +20,51 @@ const text = {
   passwordRule: 'Password must contain at least 8 characters',
 };
 
-const CreateAccountPage: React.FC = () => {
-  return (
-    <AuthLayout>
-      <AuthWrapper>
-        <Header>
-          <Typography variant="h1">{text.header}</Typography>
+const CreateAccountPage: React.FC = () => (
+  <AuthLayout>
+    <AuthWrapper>
+      <Header>
+        <Typography variant="h1">{text.header}</Typography>
+        <Typography color="grey" variant="bodyM">
+          {text.subheading}
+        </Typography>
+      </Header>
+      <Main>
+        <Input
+          type="email"
+          icon="email"
+          label={text.emailLabel}
+          placeholder={text.emailPlaceholder}
+        />
+        <Input
+          type="password"
+          icon="password"
+          label={text.passwordLabel}
+          placeholder={text.passwordPlaceholder}
+        />
+        <Input
+          type="password"
+          icon="password"
+          label={text.confirmPasswordLabel}
+          placeholder={text.passwordPlaceholder}
+        />
+        <Typography color="grey" variant="bodyS">
+          {text.passwordRule}
+        </Typography>
+        <Button label={text.buttonLabel} width="100%" />{' '}
+        <div>
           <Typography color="grey" variant="bodyM">
-            {text.subheading}
-          </Typography>
-        </Header>
-        <Main>
-          <Input
-            type="email"
-            icon="email"
-            label={text.emailLabel}
-            placeholder={text.emailPlaceholder}
-          />
-          <Input
-            type="password"
-            icon="password"
-            label={text.passwordLabel}
-            placeholder={text.passwordPlaceholder}
-          />
-          <Input
-            type="password"
-            icon="password"
-            label={text.confirmPasswordLabel}
-            placeholder={text.passwordPlaceholder}
-          />
-          <Typography color="grey" variant="bodyS">
-            {text.passwordRule}
-          </Typography>
-          <Button label={text.buttonLabel} width="100%" />{' '}
-          <div>
-            <Typography color="grey" variant="bodyM">
-              {text.haveAccount}
-            </Typography>{' '}
-            <Link to="#">{text.logIn}</Link>
-          </div>
-        </Main>
-      </AuthWrapper>
-    </AuthLayout>
-  );
-};
+            {text.haveAccount}
+          </Typography>{' '}
+          <Link to="#">{text.logIn}</Link>
+        </div>
+      </Main>
+    </AuthWrapper>
+  </AuthLayout>
+);
 
 const Header = styled.div(
-  ({}) => css`
+  () => css`
     display: flex;
     flex-direction: column;
   `,

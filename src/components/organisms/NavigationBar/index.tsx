@@ -1,4 +1,4 @@
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { styled, css } from 'styled-components';
 import Button from '~/components/atoms/Button';
 import Icon from '~/components/atoms/Icon';
@@ -14,14 +14,12 @@ const text = {
   preview: 'Preview',
 };
 
-type Props = {};
-
 const tabs: Array<{ key: Section; label: string; icon: IconName }> = [
   { key: 'links', label: 'Links', icon: 'link' },
   { key: 'profile', label: 'Profile Details', icon: 'profile-details-header' },
 ];
 
-const NavigationBar: React.FC<Props> = () => {
+const NavigationBar: React.FC = () => {
   const [currentPage, setCurrentPage] = useRecoilState(currentPageState);
   const [currentSection, setCurrentSection] =
     useRecoilState(currentSectionState);
@@ -67,7 +65,6 @@ const Container = styled.div(
     padding: ${theme.space('m')};
     border-radius: ${theme.border('base')};
     background-color: ${theme.color('white')};
-    margin: ${theme.space('m')};
   `,
 );
 

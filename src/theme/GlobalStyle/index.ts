@@ -1,22 +1,22 @@
-import { createGlobalStyle, css } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 
   @font-face {
     font-family: 'InstrumentSans';
-    src: url('InstrumentSans-Regular.ttf') format('truetype');
+    src: url('/fonts/InstrumentSans-Regular.ttf') format('truetype');
     font-weight: 300;
     font-style: normal;
   }
   @font-face {
     font-family: 'InstrumentSans';
-    src: url('InstrumentSans-SemiBold.ttf') format('truetype');
+    src: url('/fonts/InstrumentSans-SemiBold.ttf') format('truetype');
     font-weight: 500;
     font-style: normal;
   }
   @font-face {
     font-family: 'InstrumentSans';
-    src: url('InstrumentSans-Bold.ttf') format('truetype');
+    src: url('/fonts/InstrumentSans-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
   }
@@ -36,6 +36,7 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: 'InstrumentSans', sans-serif;
+    background-color: ${({ theme }) => theme.color('lightGrey')}
   }
   
   button, input {

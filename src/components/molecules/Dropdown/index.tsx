@@ -3,29 +3,28 @@ import styled, { css } from 'styled-components';
 import Icon, { IconName } from '~/components/atoms/Icon';
 import Typography from '~/components/atoms/Typography';
 
-type DropdownProps = {
-  label?: string;
-  options: Array<{
-    key: string;
-    icon: IconName;
-    label: string;
-    value: string;
-    selected?: boolean;
-  }>;
-  placeholder?: string;
+export type Option<T> = {
+  icon: IconName;
+  label: string;
+  value: T;
 };
 
-const Dropdown: React.FC<DropdownProps> = ({
+type DropdownProps<T> = {
+  label?: string;
+  options: Array<Option<T>>;
+  placeholder?: string;
+  selectedOption?: Option<T>;
+  onChange: (option: Option<T>) => void;
+};
+
+const Dropdown = <T,>({
   label,
   options,
   placeholder = 'Choose an option',
-}) => {
+  selectedOption,
+  onChange,
+}: DropdownProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(
-    options.find(option => option.selected),
-  );
-
-  console.log({ selectedOption });
 
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -69,12 +68,12 @@ const Dropdown: React.FC<DropdownProps> = ({
         <DropdownList>
           {options.map(option => (
             <DropdownItem
-              key={option.value}
+              key={option.value as string}
               onClick={() => {
-                setSelectedOption(option);
+                onChange(option);
                 setIsOpen(false);
               }}
-              selected={option.key === selectedOption?.key}
+              selected={option.value === selectedOption?.value}
             >
               <Icon name={option.icon} /> {option.label}
             </DropdownItem>
